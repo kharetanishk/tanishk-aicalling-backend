@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
 import cors from "cors";
+import fs from "fs/promises";
 
 dotenv.config();
 
@@ -13,6 +14,12 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+
+let portfolioData = null;
+
+async function loadPortfoliodata() {
+  const data = fs.readFile("./portfolio.json", "utf-8", (data, err) => {});
+}
 
 app.post("/chat", async (req, res) => {
   const { userMessage, portfolioData } = req.body;
