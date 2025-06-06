@@ -22,6 +22,7 @@ async function loadPortfolioData() {
   try {
     const data = await fs.readFile("./data/portfolio.json", "utf-8");
     portfolioData = JSON.parse(data);
+
     console.log("Portfolio data loaded successfully");
   } catch (error) {
     console.error(" Error reading portfolio data:", error);
@@ -39,24 +40,44 @@ app.post("/chat", async (req, res) => {
   if (!portfolioData) {
     return res.status(500).json({ error: "Portfolio data not loaded" });
   }
+  const summarizedData = {
+    name: portfolioData?.bio?.name || "",
+    role: portfolioData?.bio?.role || "",
+    about: portfolioData?.bio?.summary || "",
+    skills: [
+      ...(portfolioData?.skills?.languages || []),
+      ...(portfolioData?.skills?.frameworks || []),
+      ...(portfolioData?.skills?.databases || []),
+      ...(portfolioData?.skills?.tools || []),
+    ],
+    projects: (portfolioData?.projects || []).map((p) => ({
+      title: p.title || "",
+    })),
+    education: (portfolioData?.education || []).map((e) => ({
+      degree: e.degree || "",
+      institution: e.institution || "",
+      duration: e.duration || "",
+    })),
+    contact: portfolioData?.contact || "",
+  };
 
   try {
-    const chatCompletion = await openai.chat.completions.create({
+    const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
           content:
-            "You are an AI assistant for Tanishk Khare's portfolio website. ONLY answer questions based on the portfolio data provided below. If the answer is not present in the data, respond with 'I don’t have that information.' Do not guess or make up anything.",
+            "You are Tanishk’s AI. Use only the data below. If missing, reply: “I don’t have that info",
         },
         {
           role: "system",
-          content: `Portfolio Data: ${JSON.stringify(portfolioData)}`,
+          content: `Portfolio Data: ${JSON.stringify(summarizedData)})}`,
         },
         { role: "user", content: userMessage },
       ],
-      max_tokens: 500,
-      temperature: 0.7,
+      max_tokens: 100,
+      temperature: 0.4,
     });
 
     const reply = response.choices[0].message.content;

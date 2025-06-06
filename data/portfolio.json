@@ -1,11 +1,11 @@
 {
   "bio": {
     "name": "Tanishk Khare",
-    "role": "Software developer",
-    "summary": "A passionate software developer dedicated to creating innovative solutions for real-world challenges. I leverage my skills in computer science to build efficient and effective applications. I enjoy exploring new technologies and continuously improving my craft to make a positive impact through software."
+    "role": "Software Developer",
+    "summary": "Passionate about building innovative software solutions using computer science skills and exploring new technologies."
   },
   "skills": {
-    "languages": ["JavaScript", "HTML", "CSS", "SQL"],
+    "languages": ["JavaScript"],
     "frameworks": ["React", "Node.js", "Express"],
     "databases": ["MongoDB", "MySQL"],
     "tools": ["Git", "REST APIs"]
@@ -13,26 +13,11 @@
   "projects": [
     {
       "title": "Voice Portfolio AI",
-      "description": "An interactive portfolio that simulates a voice call interface powered by OpenAI's API, featuring speech-to-text and text-to-speech integration for seamless AI conversations. It responds with accurate personal information configured from structured JSON data.",
-      "technologies": [
-        "React",
-        "Node.js",
-        "Express",
-        "OpenAI API",
-        "Web Speech API"
-      ]
+      "description": "Interactive portfolio with voice call interface using OpenAI's API and speech-to-text/text-to-speech."
     },
     {
       "title": "Course Selling App",
-      "description": "A full-stack web application for selling courses with user authentication, course listing, and admin dashboard. Designed to be scalable and optimized for real-world users.",
-      "technologies": [
-        "MongoDB",
-        "Express",
-        "Tailwind",
-        "React",
-        "Node.js",
-        "JWT"
-      ]
+      "description": "Full-stack app for course selling with user auth and admin dashboard."
     }
   ],
   "experience": [
@@ -40,35 +25,20 @@
       "role": "Full-Stack Developer (Personal Projects)",
       "company": "Self-Initiated",
       "duration": "Dec 2024 - Present",
-      "description": "Built two full-stack applications from scratch, including an AI-powered voice portfolio and a course-selling web app. Managed frontend and backend development, API integration, and optimized UX for real users."
+      "description": "Built AI voice portfolio and course selling app, handling frontend, backend, and API integration."
     }
   ],
   "education": [
     {
-      "degree": "Bachelor of Computer Applications (BCA)",
-      "institution": "Shri Shankaracharya Mahavidyalaya, Hemchand Yadav University",
-      "duration": "2023 - 2026",
-      "details": "Currently pursuing BCA with a comprehensive focus on software development, database management, and IT project management."
+      "degree": "BCA",
+      "institution": "Shri Shankaracharya Mahavidyalaya",
+      "duration": "2023 - 2026"
     },
     {
-      "degree": "Coding Community Member",
+      "degree": "Coding Community member",
       "institution": "100xDevs",
-      "duration": "2024 - Present",
-      "details": "Active member of 100xDevs, a renowned coding community led by Harkirat Singh. Engaged in collaborative projects, hackathons, and open-source contributions, enhancing practical skills in full-stack development, DevOps, and Web3 technologies."
+      "duration": "2024 - Present"
     }
   ],
-  "certifications": [
-    {
-      "title": "CS50x: Introduction to Computer Science",
-      "issuer": "Harvard University",
-      "year": "2024",
-      "details": "Completed Harvard's rigorous CS50x course covering foundational computer science concepts including algorithms, data structures, software engineering, and web development."
-    }
-  ],
-  "contact": {
-    "email": "tanishk16012004@gmail.com",
-    "phone": "+91-6260440241",
-    "linkedin": "https://www.linkedin.com/in/tanishk-khare-91290930a/",
-    "github": "https://github.com/kharetanishk"
-  }
+  "contact": "Open the sidebar to contact Tanishk"
 }
