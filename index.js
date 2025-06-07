@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import cors from "cors";
@@ -76,7 +76,7 @@ app.post("/chat", async (req, res) => {
         },
         { role: "user", content: userMessage },
       ],
-      max_tokens: 100,
+      max_tokens: 130,
       temperature: 0.4,
     });
 
