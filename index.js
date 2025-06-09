@@ -28,7 +28,9 @@ async function loadPortfolioData() {
     console.error(" Error reading portfolio data:", error);
   }
 }
-
+function normalizeInput(input) {
+  return input.replace(/\bTanishq\b/gi, "Tanishk");
+}
 // Chat route
 app.post("/chat", async (req, res) => {
   const { userMessage } = req.body;
@@ -36,6 +38,7 @@ app.post("/chat", async (req, res) => {
   if (!userMessage) {
     return res.status(400).json({ error: "userMessage is required" });
   }
+  userMessage = normalizeInput(userMessage);
 
   if (!portfolioData) {
     return res.status(500).json({ error: "Portfolio data not loaded" });
