@@ -33,7 +33,7 @@ function normalizeInput(input) {
 }
 // Chat route
 app.post("/chat", async (req, res) => {
-  const { userMessage } = req.body;
+  let { userMessage } = req.body;
 
   if (!userMessage) {
     return res.status(400).json({ error: "userMessage is required" });
@@ -71,7 +71,7 @@ app.post("/chat", async (req, res) => {
         {
           role: "system",
           content:
-            "You are Tanishk’s AI. Use only the data below. If missing, reply: “I don’t have that info",
+            "You are Tanishk’s AI. Use only the data below. If missing, reply: “I don’t have that information",
         },
         {
           role: "system",
