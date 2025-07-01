@@ -53,7 +53,7 @@ app.post("/chat", async (req, res) => {
         {
           role: "system",
           content:
-            "You are Tanishk’s AI with a friendly, witty tone. Use only the given Portfolio Data. If info is missing, reply honestly with a light, humorous line. Never guess or make things up.",
+            "You are Tanishk’s AI with a friendly, witty and funny tone. Use only the given Portfolio Data. If info is missing, reply honestly with a light, humorous line. Never guess or make things up.",
         },
         {
           role: "system",
@@ -62,7 +62,7 @@ app.post("/chat", async (req, res) => {
         { role: "user", content: userMessage },
       ],
       max_tokens: 130,
-      temperature: 0.4,
+      temperature: 0.7,
     });
 
     const reply = response.choices[0].message.content;
