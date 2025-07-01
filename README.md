@@ -1,0 +1,1 @@
+This is a backend application , which enables a route with the open ai api . It responses from a json data that runs around the machine learning of chatgpt ai , every output is from the jsonn data only .
