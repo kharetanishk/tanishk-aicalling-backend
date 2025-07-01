@@ -1,23 +1,55 @@
 {
   "bio": {
     "name": "Tanishk Khare",
+    "age": 21,
     "role": "Software Developer",
-    "summary": "Passionate about building innovative software solutions using computer science skills and exploring new technologies."
+    "summary": "Passionate about building innovative software solutions using computer science skills and exploring new technologies.",
+    "hobbies": [
+      "Playing cricket",
+      "Coding real-world solutions",
+      "Exploring AI tools and innovation enthusiast"
+    ]
   },
   "skills": {
-    "languages": ["JavaScript"],
-    "frameworks": ["React", "Node.js", "Express"],
+    "languages": ["JavaScript", "TypeScript"],
+    "frontend": ["React", "Tailwind CSS", "HTML", "CSS"],
+    "backend": ["Node.js", "Express"],
     "databases": ["MongoDB", "MySQL"],
-    "tools": ["Git", "REST APIs"]
+    "tools": ["Git", "REST APIs", "Postman", "VS Code"],
+    "other": ["JWT Auth", "Axios", "Vercel", "Netlify"]
   },
   "projects": [
     {
       "title": "Voice Portfolio AI",
-      "description": "Interactive portfolio with voice call interface using OpenAI's API and speech-to-text/text-to-speech."
+      "description": "An interactive voice-based portfolio that simulates a phone call experience. Users can ask questions about me, and my AI responds using real-time speech synthesis, powered by OpenAI and Web Speech API.",
+      "techStack": [
+        "React",
+        "OpenAI API",
+        "Web Speech API",
+        "JavaScript",
+        "Tailwind CSS"
+      ],
+      "features": [
+        "Real-time STT (Speech-to-Text) and TTS (Text-to-Speech)",
+        "Call timer with session tracking",
+        "Smart response system based on embedded JSON data",
+        "Mobile-first responsive UI"
+      ],
+      "challenges": [
+        "Token efficiency with OpenAI responses",
+        "Smooth UI updates between speech events",
+        "Browser compatibility for speech APIs"
+      ]
     },
     {
       "title": "Course Selling App",
-      "description": "Full-stack app for course selling with user auth and admin dashboard."
+      "description": "A backend application for selling online courses, complete with user authentication, protected routes, and a role-based admin dashboard.",
+      "techStack": ["Node.js", "Express", "MongoDB", "JWT", "Axios"],
+      "features": [
+        "User sign-up/login with JWT authentication",
+        "Admin dashboard to manage courses",
+        "CRUD functionality for courses and users"
+      ]
     }
   ],
   "experience": [
@@ -35,10 +67,37 @@
       "duration": "2023 - 2026"
     },
     {
-      "degree": "Coding Community member",
+      "degree": "Coding Community Member",
       "institution": "100xDevs",
       "duration": "2024 - Present"
     }
   ],
-  "contact": "Open the sidebar to contact Tanishk"
+  "achievements": [
+    {
+      "title": "12th CBSE Board",
+      "description": "Scored 88.4% in PCM stream (2022)"
+    },
+    {
+      "title": "10th CBSE Board",
+      "description": "Scored 88% overall (2020)"
+    },
+    {
+      "title": "College First Year Rank",
+      "description": "Secured 2nd rank in BCA first year (2023–24) at Shri Shankaracharya Mahavidyalaya"
+    }
+  ],
+  "interests": [
+    "Artificial Intelligence",
+    "Conversational Interfaces",
+    "Optimisation and scaling products",
+    "Creative Frontend Projects",
+    "Focus on real world solutions",
+    "Startup Product Building"
+  ],
+  "contact": {
+    "email": "tanishk16012004@gmail.com",
+    "phone": "6260440241",
+    "location": "Bhilai, Chhattisgarh, India",
+    "github and linkedin": "Open the sidebar"
+  }
 }

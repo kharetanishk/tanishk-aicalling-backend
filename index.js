@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import OpenAI from "openai";
 import cors from "cors";
 import fs from "fs/promises";
-
+import { extractRelevantData } from "./relevantData.js";
 dotenv.config();
 
 const app = express();
@@ -43,26 +43,8 @@ app.post("/chat", async (req, res) => {
   if (!portfolioData) {
     return res.status(500).json({ error: "Portfolio data not loaded" });
   }
-  const summarizedData = {
-    name: portfolioData?.bio?.name || "",
-    role: portfolioData?.bio?.role || "",
-    about: portfolioData?.bio?.summary || "",
-    skills: [
-      ...(portfolioData?.skills?.languages || []),
-      ...(portfolioData?.skills?.frameworks || []),
-      ...(portfolioData?.skills?.databases || []),
-      ...(portfolioData?.skills?.tools || []),
-    ],
-    projects: (portfolioData?.projects || []).map((p) => ({
-      title: p.title || "",
-    })),
-    education: (portfolioData?.education || []).map((e) => ({
-      degree: e.degree || "",
-      institution: e.institution || "",
-      duration: e.duration || "",
-    })),
-    contact: portfolioData?.contact || "",
-  };
+
+  const relevantData = extractRelevantData(userMessage, portfolioData);
 
   try {
     const response = await openai.chat.completions.create({
@@ -71,11 +53,11 @@ app.post("/chat", async (req, res) => {
         {
           role: "system",
           content:
-            "You are Tanishk’s AI. Use only the data below. If missing, reply: “I don’t have that information",
+            "You are Tanishk’s AI with a friendly, witty tone. Use only the given Portfolio Data. If info is missing, reply honestly with a light, humorous line. Never guess or make things up.",
         },
         {
           role: "system",
-          content: `Portfolio Data: ${JSON.stringify(summarizedData)})}`,
+          content: `Portfolio Data: ${JSON.stringify(relevantData)}}`,
         },
         { role: "user", content: userMessage },
       ],
