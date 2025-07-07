@@ -15,7 +15,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Load portfolio data from file
 let portfolioData = null;
 
 async function loadPortfolioData() {
@@ -62,7 +61,7 @@ app.post("/chat", async (req, res) => {
         { role: "user", content: userMessage },
       ],
       max_tokens: 130,
-      temperature: 0.7,
+      temperature: 0.5,
     });
 
     const reply = response.choices[0].message.content;
