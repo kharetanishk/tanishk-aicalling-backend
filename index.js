@@ -14,6 +14,10 @@ app.get("/health-check", (req, res) => {
   res.status(200).send("success!");
 });
 
+app.get("/test", (req, res) => {
+  res.status(200).send("hello world");
+});
+
 // OpenAI setup
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
