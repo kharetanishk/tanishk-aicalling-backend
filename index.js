@@ -10,6 +10,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/health-check", (req, res) => {
+  res.status(200).send("success")
+})
+
 // OpenAI setup
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
