@@ -1,0 +1,21 @@
+name: Commit to Production server
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ssh into server
+        uses: appleboy/ssh-action@v1.0.3
+        with: 
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+             cd tanishk-aicalling-backend || exit
+             git pull
+             bun install
+             pm2 restart aicalling-backend
