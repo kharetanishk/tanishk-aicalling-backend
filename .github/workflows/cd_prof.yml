@@ -1,7 +1,7 @@
 name: Commit to Production server
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   deploy:
