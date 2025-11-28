@@ -4,87 +4,105 @@ import OpenAI from "openai";
 import cors from "cors";
 import fs from "fs/promises";
 import { extractRelevantData } from "./relevantData.js";
+
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "*", // or restrict later
+  })
+);
+
 app.use(express.json());
 
-// OpenAI setup
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
+// Load portfolio data once
 let portfolioData = null;
 
 async function loadPortfolioData() {
   try {
     const data = await fs.readFile("./data/portfolio.json", "utf-8");
     portfolioData = JSON.parse(data);
-
-    console.log("Portfolio data loaded successfully");
+    console.log("✔ Portfolio data loaded");
   } catch (error) {
-    console.error(" Error reading portfolio data:", error);
+    console.error("Error loading portfolio data:", error);
   }
 }
+
+// Normalize name typos
 function normalizeInput(input) {
-  return input.replace(/\bTanishq\b/gi, "Tanishk");
+  return input.replace(/\btanishq\b/gi, "Tanishk");
 }
-// Chat route
+
+// OpenAI setup
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+// Chat Endpoint
 app.post("/chat", async (req, res) => {
-  let { userMessage } = req.body;
-
-  if (!userMessage) {
-    return res.status(400).json({ error: "userMessage is required" });
-  }
-  userMessage = normalizeInput(userMessage);
-
-  if (!portfolioData) {
-    return res.status(500).json({ error: "Portfolio data not loaded" });
-  }
-
-  const relevantData = extractRelevantData(userMessage, portfolioData);
-
   try {
-    const response = await openai.chat.completions.create({
+    let { userMessage } = req.body;
+
+    if (!userMessage || userMessage.trim() === "") {
+      return res.status(400).json({ error: "userMessage is required" });
+    }
+
+    userMessage = normalizeInput(userMessage);
+
+    if (!portfolioData) {
+      return res.status(500).json({ error: "Portfolio data not loaded" });
+    }
+
+    // Extract relevant data for the query
+    const relevantData = extractRelevantData(userMessage, portfolioData);
+
+    // Generate answer
+    const completion = await client.chat.completions.create({
       model: "gpt-3.5-turbo",
+      temperature: 0.5,
+      max_tokens: 150,
+
       messages: [
         {
           role: "system",
           content:
-            "You are Tanishk’s AI with a friendly, witty and funny tone. Use only the given Portfolio Data. If info is missing, reply honestly with a light, humorous line. Never guess or make things up.",
+            "You are Tanishk’s AI assistant. Speak in a friendly, slightly witty tone. Only use the provided portfolio data. If you don't know something, say so with a light humorous touch.",
         },
         {
           role: "system",
-          content: `Portfolio Data: ${JSON.stringify(relevantData)}}`,
+          content: `Relevant Portfolio Data: ${JSON.stringify(relevantData)}`,
         },
-        { role: "user", content: userMessage },
+        {
+          role: "user",
+          content: userMessage,
+        },
       ],
-      max_tokens: 130,
-      temperature: 0.5,
     });
 
-    const reply = response.choices[0].message.content;
+    const reply =
+      completion.choices?.[0]?.message?.content || "I am speechless 😄";
+
     res.json({ response: reply });
   } catch (error) {
-    if (error.response) {
-      console.error("OpenAI API Error Status:", error.response.status);
-      console.error("OpenAI API Error Data:", error.response.data);
-    } else {
-      console.error("OpenAI API Error:", error.message);
-    }
-    res.status(500).json({ error: "OpenAI API error" });
+    console.error("OpenAI Error:", error);
+
+    res.status(500).json({
+      error: "OpenAI API error",
+      details: error?.message,
+    });
   }
 });
 
 // Start server
-async function startServer() {
+async function start() {
   await loadPortfolioData();
 
   const PORT = process.env.PORT || 3000;
+
   app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(` AI Portfolio Server running at http://localhost:${PORT}`);
   });
 }
 
-startServer();
+start();

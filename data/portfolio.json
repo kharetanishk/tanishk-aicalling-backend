@@ -3,25 +3,30 @@
     "name": "Tanishk Khare",
     "age": 21,
     "role": "Software Developer",
-    "summary": "Passionate about building innovative software solutions using computer science skills and exploring new technologies.",
+    "summary": "Passionate software developer skilled in building scalable, real-world applications using modern web technologies. Currently expanding expertise in full-stack development, AI-powered interfaces, and production-grade backend systems.",
     "hobbies": [
       "Playing cricket",
       "Coding real-world solutions",
-      "Exploring AI tools and innovation enthusiast"
+      "Exploring AI tools & emerging technologies"
     ]
   },
   "skills": {
     "languages": ["JavaScript", "TypeScript"],
-    "frontend": ["React", "Tailwind CSS", "HTML", "CSS"],
-    "backend": ["Node.js", "Express"],
-    "databases": ["MongoDB", "MySQL"],
-    "tools": ["Git", "REST APIs", "Postman", "VS Code"],
-    "other": ["JWT Auth", "Axios", "Vercel", "Netlify"]
+    "frontend": ["React", "Next.js", "Tailwind CSS", "HTML", "CSS"],
+    "backend": ["Node.js", "Express", "Prisma ORM"],
+    "databases": ["PostgreSQL", "MongoDB", "MySQL"],
+    "tools": ["Git", "REST APIs", "Postman", "VS Code", "Razorpay API"],
+    "other": [
+      "JWT Authentication",
+      "Axios",
+      "Server-Side Rendering (SSR)",
+      "Full-stack web application architecture"
+    ]
   },
   "projects": [
     {
       "title": "Voice Portfolio AI",
-      "description": "An interactive voice-based portfolio that simulates a phone call experience. Users can ask questions about me, and my AI responds using real-time speech synthesis, powered by OpenAI and Web Speech API.",
+      "description": "An interactive voice-based AI portfolio that simulates a phone-call experience. Users ask questions and receive real-time AI responses using speech synthesis.",
       "techStack": [
         "React",
         "OpenAI API",
@@ -30,46 +35,95 @@
         "Tailwind CSS"
       ],
       "features": [
-        "Real-time STT (Speech-to-Text) and TTS (Text-to-Speech)",
-        "Call timer with session tracking",
-        "Smart response system based on embedded JSON data",
-        "Mobile-first responsive UI"
+        "Real-time STT and TTS",
+        "Embedded knowledge base for smart question answering",
+        "Call-like responsive UI",
+        "Mobile-first design"
       ],
       "challenges": [
-        "Token efficiency with OpenAI responses",
-        "Smooth UI updates between speech events",
-        "Browser compatibility for speech APIs"
+        "Efficient token usage",
+        "Real-time event-driven UI updates",
+        "Handling browser speech API inconsistencies"
       ]
     },
     {
-      "title": "Course Selling App",
-      "description": "A backend application for selling online courses, complete with user authentication, protected routes, and a role-based admin dashboard.",
-      "techStack": ["Node.js", "Express", "MongoDB", "JWT", "Axios"],
+      "title": "Second Brain — Idea & Knowledge Management App",
+      "description": "A MERN + TypeScript productivity application that acts as your personal second brain. It helps you store ideas, links, thoughts, and insights in one organized space so they never get lost (like when texting yourself on WhatsApp).",
+      "techStack": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "JWT",
+        "Tailwind CSS"
+      ],
       "features": [
-        "User sign-up/login with JWT authentication",
-        "Admin dashboard to manage courses",
-        "CRUD functionality for courses and users"
+        "Save ideas, links, notes, and inspirations instantly",
+        "Organize thoughts into shareable 'Brains'",
+        "JWT-based authentication with secure user accounts",
+        "Share your collection with others via a public link",
+        "Clean, fast, and minimal UI designed for quick capture",
+        "Auto-sync across devices"
+      ],
+      "challenges": [
+        "Designing a smooth user flow for fast idea capture",
+        "Building shareable public pages with secure access",
+        "Ensuring consistent performance with large note collections"
+      ]
+    },
+    {
+      "title": "Nutriwell — Nutrition & Wellness Platform",
+      "description": "A full-stack production-grade application for consultation bookings, diet plans, user forms, WhatsApp integration, and admin tools.",
+      "techStack": [
+        "Next.js",
+        "Node.js",
+        "Express",
+        "Prisma",
+        "PostgreSQL",
+        "Razorpay",
+        "Cloudinary"
+      ],
+      "features": [
+        "Dynamic doctor form builder (200+ fields)",
+        "Slot management system",
+        "Online payment flow with Razorpay",
+        "WhatsApp automated reminders",
+        "Admin panel with full patient history",
+        "SEO-optimized SSR pages"
       ]
     }
   ],
   "experience": [
     {
+      "role": "Associate Software Developer (Intern)",
+      "company": "Bitcode Software Pvt Ltd, Bhilai",
+      "duration": "Nov 2025 – Present",
+      "description": "Working on full-stack development using Next.js, Prisma ORM, PostgreSQL, and modern backend architectures. Building production-grade REST APIs, reusable UI components, and real-world client-facing features."
+    },
+    {
+      "role": "Process Executive Intern",
+      "company": "Augtech Nextwealth, Bhilai",
+      "duration": "Aug 2025 – Sep 2025",
+      "description": "Worked on data annotation, LiDAR technology processing, and fundamentals of AI/ML data pipelines."
+    },
+    {
       "role": "Full-Stack Developer (Personal Projects)",
       "company": "Self-Initiated",
-      "duration": "Dec 2024 - Present",
-      "description": "Built AI voice portfolio and course selling app, handling frontend, backend, and API integration."
+      "duration": "Dec 2024 – Present",
+      "description": "Built multiple real-world applications including AI voice portfolio, course selling backend, and full-stack health consultation platform."
     }
   ],
   "education": [
     {
       "degree": "BCA",
       "institution": "Shri Shankaracharya Mahavidyalaya",
-      "duration": "2023 - 2026"
+      "duration": "2023 – 2026"
     },
     {
       "degree": "Coding Community Member",
       "institution": "100xDevs",
-      "duration": "2024 - Present"
+      "duration": "2024 – Present"
     }
   ],
   "achievements": [
@@ -82,17 +136,17 @@
       "description": "Scored 88% overall (2020)"
     },
     {
-      "title": "College First Year Rank",
-      "description": "Secured 2nd rank in BCA first year (2023–24) at Shri Shankaracharya Mahavidyalaya"
+      "title": "College Rank",
+      "description": "Secured 2nd rank in BCA First Year (2023–24)"
     }
   ],
   "interests": [
     "Artificial Intelligence",
     "Conversational Interfaces",
-    "Optimisation and scaling products",
-    "Creative Frontend Projects",
-    "Focus on real world solutions",
-    "Startup Product Building"
+    "Next.js & scalable architectures",
+    "Full-stack product development",
+    "Startup product building",
+    "Real-world problem solving"
   ],
   "contact": {
     "email": "tanishk16012004@gmail.com",

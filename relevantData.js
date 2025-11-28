@@ -1,54 +1,69 @@
 export function extractRelevantData(userMessage, portfolioData) {
-  const lowerMsg = userMessage.toLowerCase();
+  const msg = userMessage.toLowerCase();
   const relevant = {};
-  const addedSections = new Set(); //this is here to remove all the duplicate values if user provides..
+  const addedSections = new Set(); // prevent duplicates
 
   const keywordToSectionMap = {
+    // Projects
     project: "projects",
     projects: "projects",
     portfolio: "projects",
+    app: "projects",
     apps: "projects",
+    application: "projects",
     applications: "projects",
 
+    // Skills
     skills: "skills",
+    tech: "skills",
+    techs: "skills",
+    techstack: "skills",
     technologies: "skills",
     tools: "skills",
-    stack: "skills",
-    techstack: "skills",
-    tech: "skills",
-    programminglanguage: "skills",
     language: "skills",
+    languages: "skills",
     frontend: "skills",
     backend: "skills",
     database: "skills",
+    databases: "skills",
+    stack: "skills",
 
+    // Experience
     experience: "experience",
     work: "experience",
-    "worked on": "experience",
+    worked: "experience",
     company: "experience",
-    projectsworked: "experience",
+    job: "experience",
+    internship: "experience",
+    intern: "experience",
 
+    // Education
     education: "education",
+    educate: "education",
     studies: "education",
+    study: "education",
     college: "education",
     school: "education",
-    qualifications: "education",
     degree: "education",
-    institution: "education",
+    qualifications: "education",
 
+    // Achievements
     achievement: "achievements",
     achievements: "achievements",
     rank: "achievements",
     marks: "achievements",
-    board: "achievements",
     score: "achievements",
     percentage: "achievements",
+    board: "achievements",
 
+    // Interests
     interest: "interests",
     interests: "interests",
+    hobby: "interests",
+    hobbies: "interests",
     passion: "interests",
-    passionate: "interests",
 
+    // Contact
     contact: "contact",
     email: "contact",
     phone: "contact",
@@ -59,27 +74,22 @@ export function extractRelevantData(userMessage, portfolioData) {
     linkedin: "contact",
     social: "contact",
 
+    // Bio
     bio: "bio",
     about: "bio",
     yourself: "bio",
-    introduce: "bio",
     introduction: "bio",
-    "who is tanishk": "bio",
-    age: "bio",
-    old: "bio",
-    name: "bio",
-    "what do you do": "bio",
-    role: "bio",
+    introduce: "bio",
     summary: "bio",
-    hobbies: "bio",
-    cricket: "bio",
-    "play cricket": "bio",
-    "free time": "bio",
-    "like to do": "bio",
+    who: "bio",
+    name: "bio",
+    role: "bio",
+    age: "bio",
   };
 
+  // Check user message for keywords
   for (const keyword in keywordToSectionMap) {
-    if (lowerMsg.includes(keyword)) {
+    if (msg.includes(keyword)) {
       const section = keywordToSectionMap[keyword];
 
       if (!addedSections.has(section)) {
@@ -134,6 +144,7 @@ export function extractRelevantData(userMessage, portfolioData) {
     }
   }
 
+  // Default fallback → name + role
   if (Object.keys(relevant).length === 0) {
     relevant.bio = {
       name: portfolioData?.bio?.name,
