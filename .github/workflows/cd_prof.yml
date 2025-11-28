@@ -17,5 +17,5 @@ jobs:
           script: |
              cd tanishk-aicalling-backend || exit
              git pull
-             bun install
+             npm install
              pm2 restart aicalling-backend
