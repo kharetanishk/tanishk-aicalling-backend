@@ -85,6 +85,7 @@ export function extractRelevantData(userMessage, portfolioData) {
     name: "bio",
     role: "bio",
     age: "bio",
+    girlfriend: "girlfriend",
   };
 
   // Check user message for keywords
@@ -139,6 +140,8 @@ export function extractRelevantData(userMessage, portfolioData) {
           case "contact":
             relevant.contact = portfolioData?.contact;
             break;
+          case "girlfriend":
+            relevant.girlfriend = portfolioData?.girlfriend;
         }
       }
     }
